@@ -9,9 +9,10 @@ const App: React.FC = () => {
       SplashScreen.hide();
     }
   }, []);
+
   return (
     <>
-      <AppEntry />
+      <AppEntry AuthScreens={undefined} BottomTabsScreen={undefined} />
     </>
   );
 };

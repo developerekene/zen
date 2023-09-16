@@ -1,18 +1,36 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AuthStack from './StackScreens/AuthStack';
+import BottomTabsStack from './StackScreens/BottomTabsStack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-const AppEntry: React.FC<any> = () => {
+type RootStackParamList = {
+  AuthScreens: undefined;
+  BottomTabsScreen: undefined;
+};
+
+const AppEntryStack = createNativeStackNavigator();
+
+const AppEntry: React.FC<RootStackParamList> = () => {
   return (
-    <View style={styles.container}>
-      <Text>App Entry</Text>
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <AppEntryStack.Navigator initialRouteName="AuthScreens">
+          <AppEntryStack.Screen
+            name="AuthScreens"
+            component={AuthStack}
+            options={{headerShown: false}}
+          />
+          <AppEntryStack.Screen
+            name="BottomTabs"
+            component={BottomTabsStack}
+            options={{headerShown: false}}
+          />
+        </AppEntryStack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
 export default AppEntry;
-
-const styles = StyleSheet.create({
-  container: {
-    paddingLeft: 20,
-  },
-});
