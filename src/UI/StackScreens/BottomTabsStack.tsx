@@ -6,12 +6,9 @@ const BottomTabs = createBottomTabNavigator();
 
 const BottomTabsStack: React.FC = () => {
   return (
-    <BottomTabs.Navigator>
-      <BottomTabs.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{headerShown: false}}
-      />
+    <BottomTabs.Navigator screenOptions={{headerShown: false}}>
+      <BottomTabs.Screen name="Home" component={HomeScreen} />
+      <BottomTabs.Screen name="Tools" component={HomeScreen} />
     </BottomTabs.Navigator>
   );
 };
